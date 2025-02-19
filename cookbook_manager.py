@@ -92,6 +92,11 @@ def main():
 
     # Test if the connection is viable
     if conn is not None:
+        #Drop the existing table
+        cursor = conn.cursor()
+        cursor.execute("DROP TABLE IF EXISTS cookbooks")
+        conn.commit()
+
         # Create our table
         create_table(conn)
 
